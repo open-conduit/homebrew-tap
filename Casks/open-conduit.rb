@@ -9,25 +9,25 @@ cask "open-conduit" do
     end
   end
 
-  version "1.0.0"
+  version "1.1.0"
 
   on_macos do
     on_arm do
-      sha256 "f34ff04c046f67d6d8e4b112902e579a6b9610fec95fa0908c76bbe54bbe98d6"
+      sha256 "4700c1bf182b7934c1ad4604687df638daadaf927e3a46b3d053ee46ea0a33d1"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "15e99a1230e58276571ecda366539e286ec8dc487641dc8fff1820127c92a459"
+      sha256 "65a4d85ff790942a205b5143bf1f0bd63e03420d16e8632208a5f33c60a17a85"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "43e533ae99334602726387ee42d91f28d9f5e6c634f3ba9449adabf3190a6484"
+      sha256 "1205da34a17e537e3533197d766306e96fe2d8870acc33490c9aae67417927b5"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "0d52eca652fe1b2882ee6e237e5bca13d7771bd2bdc9bddd97f1909d7ceaa317"
+      sha256 "15c6c5fba87b4cde807b8b464cddd4001c6cf3018efdb49e0e8e355c5d17971f"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -42,5 +42,14 @@ cask "open-conduit" do
 
   binary "open-conduit"
 
+  uninstall launchctl: [
+      "com.open-conduit.daemon",
+    ]
+
   # No zap stanza required
+
+  caveats <<~EOS
+    Run the daemon in the background (a per-user launchd service that starts at login):
+      open-conduit service install
+  EOS
 end
