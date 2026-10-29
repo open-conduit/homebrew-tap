@@ -9,25 +9,25 @@ cask "open-conduit" do
     end
   end
 
-  version "1.6.0"
+  version "1.6.1"
 
   on_macos do
     on_arm do
-      sha256 "5627c8972b5b9f2c96086b606636afcc2071f15f16d7d71e08ffea985de6606f"
+      sha256 "d2020af7edf71da8d25a9031fad89c0aa4e5dcbd69140a86e5e75d0dda14c5b9"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "b33f21d4d4a58059d36a6cb86f291e9dd654d80ece41a18fd594e20abaed0690"
+      sha256 "c4460294926d501aa3c71d78ecb72bf19fab69d4f461c1c1f00a93f0db41cbfb"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "b0d0aba6f0c8eaf60309d5e93574d47e6f38980a79aad52538f19872babcc5a4"
+      sha256 "027f6c9b497434a2a08547b44bfad4587a4b101aee564eb8d6c3504d01e68f4c"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "b2e9f1467d675f1cbfd73a9c78db53a82e1effb2dcb0504c65c99a66f4ab3d92"
+      sha256 "99079e599f05e8c58f911a4902b2f1710685e3b9962c8ae6c051ddcc169405f4"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_amd64.tar.gz"
     end
   end
