@@ -9,25 +9,25 @@ cask "open-conduit" do
     end
   end
 
-  version "1.6.2"
+  version "1.6.3"
 
   on_macos do
     on_arm do
-      sha256 "f8a543335e1cf868ec313ec36b814ed603e44e7779b0b42075c6fdd43ce22ac9"
+      sha256 "d820ef5a839044dfabaa923e312e67841ea4fbf8316d9aa6854507c3eb789a33"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "32f6691aeac3ed3be30f1bcc38eacd0e9958dfdbdf73bc04d88b0b873f7199d7"
+      sha256 "9f61a34098b1e1c4e5bb0b5ab2d91fe31ea80e8e43095a280440d84ad2307182"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "37bf0b579e3b3a0acc449ef69ff764d670eaba01f810434b2b5dbe0651b41a65"
+      sha256 "4d05e42a3fc47d3a572c730c4aa89fad9721c1f5958f2babda07c0c7f93254ee"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "2d9be0dc5c02f17b983da98e6650bd272b80b69f2d17a779aef5bdd5994c2a02"
+      sha256 "d20d8a50e0458e5fc6ca75aeba0d61d2af34f43a9ef5e5c43c13d491256d7792"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_amd64.tar.gz"
     end
   end
@@ -42,14 +42,16 @@ cask "open-conduit" do
 
   binary "open-conduit"
 
-  uninstall launchctl: [
+  zap launchctl: [
       "com.open-conduit.daemon",
     ]
-
-  # No zap stanza required
 
   caveats <<~EOS
     Run the daemon in the background (a per-user launchd service that starts at login):
       open-conduit service install
+    Upgrades restart it on the new version. Remove it with
+    open-conduit service uninstall before brew uninstall, or use brew uninstall --zap.
+    Upgrading from 1.6.2 or earlier removes the service once: if
+    open-conduit service status says not installed, run open-conduit service install.
   EOS
 end
