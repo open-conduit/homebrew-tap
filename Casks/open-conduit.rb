@@ -3,31 +3,31 @@ cask "open-conduit" do
   postflight_steps do
     on_macos do
       run "/usr/bin/xattr",
-          args:           ["-dr", "com.apple.quarantine", "open-conduit", "os"],
+          args:           ["-dr", "com.apple.quarantine", "open-conduit", "os", "extensions"],
           chdir:          ".",
-          writable_paths: ["open-conduit", "os"]
+          writable_paths: ["open-conduit", "os", "extensions"]
     end
   end
 
-  version "1.9.0"
+  version "1.10.0"
 
   on_macos do
     on_arm do
-      sha256 "b7894f148fd0adf87873205494cb3e5322d9ec1b2015d1dfa040a33f6b09d9c0"
+      sha256 "16693e3e54d464474bc3633c3ce8848fd6de0f96d1c64cbfbf737ddef6d4283c"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "4e32e3fa5060f807bc17f189cd0b52d71df006a9314f0fc6d3bf7f0f0f892c1a"
+      sha256 "7197212ad950849f2697921239eca618a857ab3cc9c23410cb817d6387357a1a"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_darwin_amd64.tar.gz"
     end
   end
   on_linux do
     on_arm do
-      sha256 "51bf7f73be37f78a397923e49ffa5686253485b10d86b827c590fd649b978ac0"
+      sha256 "83137978a267d05268107d89dd7ce45994944b70c122b968315b6341e439f72b"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "917168ebc5d7cac4b9b4783544e18bf03384d4960d7f63522b82a85dc2c7f2b1"
+      sha256 "890d1ec22c1429a1431ac20aff8f26d2cef44142f7d88a0a05d9137b435a2811"
       url "https://github.com/open-conduit/open-conduit/releases/download/v#{version}/open-conduit_#{version}_linux_amd64.tar.gz"
     end
   end
